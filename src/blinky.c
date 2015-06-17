@@ -43,3 +43,20 @@ void startBlinkyGreen(void) {
   NORMALPRIO,
                     tBlinkyGreen, NULL);
 }
+
+static THD_WORKING_AREA(waBlinkyBlue, BLINKY_STACK_SIZE);
+static THD_FUNCTION(tBlinkyBlue, arg) {
+  (void)arg;
+  chRegSetThreadName("BlinkyBlue");
+  while (TRUE) {
+      chThdSleepMilliseconds(200);
+      palTogglePad(GPIOE, GPIOE_LED4_BLUE);
+    }
+  return 0;
+}
+
+void startBlinkyBlue(void) {
+  chThdCreateStatic(waBlinkyBlue, sizeof(waBlinkyBlue),
+  NORMALPRIO,
+                    tBlinkyBlue, NULL);
+}

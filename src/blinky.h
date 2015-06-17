@@ -12,5 +12,6 @@
 
 extern void startBlinkyRed(void);
 extern void startBlinkyGreen(void);
+extern void startBlinkyBlue(void);
 
 #endif /* BLINKY_H_ */
